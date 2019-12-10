@@ -1,0 +1,22 @@
+job("seed") {
+	description()
+	keepDependencies(false)
+	scm {
+		git {
+			remote {
+				github("Akirahpola/JenkinsJobDSL", "https")
+			}
+			branch("*/master")
+		}
+	}
+	disabled(false)
+	concurrentBuild(false)
+	steps {
+		dsl {
+			ignoreExisting(false)
+			removeAction("IGNORE")
+			removeViewAction("IGNORE")
+			lookupStrategy("JENKINS_ROOT")
+		}
+	}
+}
